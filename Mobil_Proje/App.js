@@ -1,32 +1,23 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar,ScrollView  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Kriptolar from './pages/KriptoPage'
-import ExchangePage from './pages/Exchange'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
+import StackNavi from './pages/stackNavi';
+import TabNavi from './pages/TabNavi';
 
-
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <>
       <StatusBar style="auto"/>
       <NavigationContainer >
-        <Stack.Navigator >
-          <Stack.Screen name="KriptoList" component={Kriptolar} options={{headerShown: false}}/>
-          <Stack.Screen name="ExchangeP" component={ExchangePage} options={{headerShown: false}}/>
-        </Stack.Navigator>
+        <Drawer.Navigator >
+          <Drawer.Screen name="Kripto" component={StackNavi}/>
+          <Drawer.Screen name="Login" component={TabNavi}/>
+        </Drawer.Navigator>
       </NavigationContainer>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  },
-});

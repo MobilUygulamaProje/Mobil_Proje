@@ -1,7 +1,9 @@
 import React from 'react'
 import {View,Text,ScrollView} from 'react-native'
 import NaviBar from '../src/components/NaviBar'
-import Kriptolar from '../src/components/KriptoList'
+import Kriptolar from '../src/components/Kriptolar'
+
+
 function KriptoPage({navigation}) {
     return (
         <>
