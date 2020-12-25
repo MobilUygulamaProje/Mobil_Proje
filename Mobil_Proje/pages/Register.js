@@ -5,7 +5,7 @@ import {
     StatusBar, ScrollView
 } from 'react-native';
 
-function Register() {
+function Register({navigation}) {
 
     return (
 
@@ -39,11 +39,12 @@ function Register() {
 
 
                     <TouchableOpacity style={styles.loginBtn}>
-                        <Text style={styles.loginText}>LOGIN</Text>
+                        <Text style={styles.loginText}>ÜYE OL</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
-                        <Text style={styles.signupText}>Signup</Text>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('Login')}>
+                        <Text style={styles.signupText}>oturum aç</Text>
                     </TouchableOpacity>
 
                 </View>

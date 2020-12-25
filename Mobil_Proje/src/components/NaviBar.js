@@ -4,7 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 const Height=Dimensions.get("window").height;
 const Width=Dimensions.get("window").width;
 
-function NaviBar() {
+function NaviBar({navigation}) {
     const [toggle,setToggle]=useState(false);
     return (
         <View style={{backgroundColor:"#232632"}}>
@@ -25,8 +25,8 @@ function NaviBar() {
             {
                 toggle ? (
                     <View style={{borderWidth:0.25,borderColor:"#232632",borderTopColor:"#d8d8d8"}}>
-                        <Text style={styles.texts}>Hakkımızda</Text>
-                        <Text style={styles.texts}>İletişim</Text>
+                        <Text style={styles.texts} onPress={() => {setToggle(false),navigation.navigate('Kripto')}}>Ana Sayfa</Text>
+                        <Text style={styles.texts} onPress={() => {setToggle(false),navigation.navigate('Exchange')}}>Birim Çevirici</Text>
                         <View style={{flexDirection:"row",justifyContent:"center",alignItems:"center",marginBottom:25}}>
                             <FontAwesome5 onPress={() => Linking.openURL('http://www.twitter.com')} size={30} name={'twitter'} color="#d8d8d8" style={{padding:15}}/>
                             <FontAwesome5 onPress={() => Linking.openURL('http://www.facebook.com')} size={30} name={'facebook'} color="#d8d8d8" style={{padding:15}}/>

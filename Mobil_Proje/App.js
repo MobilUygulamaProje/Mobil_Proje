@@ -1,23 +1,13 @@
-import * as React from 'react';
-import { StyleSheet, Text, View, StatusBar,ScrollView  } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import 'react-native-gesture-handler';
-import StackNavi from './pages/stackNavi';
-import TabNavi from './pages/TabNavi';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-const Drawer = createDrawerNavigator();
+import DrawerNavigator from "./navigation/DrawerNavigator";
 
-export default function App() {
+ const App = () => {
   return (
-    <>
-      <StatusBar style="auto"/>
-      <NavigationContainer >
-        <Drawer.Navigator >
-          <Drawer.Screen name="Kripto" component={StackNavi}/>
-          <Drawer.Screen name="Login" component={TabNavi}/>
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <DrawerNavigator />
+    </NavigationContainer>
   );
 }
+export default App;
