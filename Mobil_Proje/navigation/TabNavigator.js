@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainStackNavigator, FavoriStackNavigator } from "./StackNavigator";
 import Icon from 'react-native-vector-icons/Ionicons';  
 
-
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {

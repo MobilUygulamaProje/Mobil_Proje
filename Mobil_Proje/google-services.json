@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588535226176",
+    "project_id": "reactdeneme-f9f53",
+    "storage_bucket": "reactdeneme-f9f53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588535226176:android:73093ce87a96482bf7a4a5",
+        "android_client_info": {
+          "package_name": "com.example.reactnativedeneme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588535226176-lh27u1isj07dneddipfopf8e4v5md0oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbaqeY5MSJlZrnBzaqNbpDUEsdukl8Dpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588535226176-lh27u1isj07dneddipfopf8e4v5md0oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
