@@ -66,9 +66,8 @@ export default class Login extends Component {
       <ScrollView style={{backgroundColor:"#2a2d3c"}}>
             <StatusBar translucent={false} />
             <KeyboardAvoidingView>
-                <View style={{alignItems:'center', justifyContent:'center', marginTop:80}}>
-                    <Text style={{fontWeight:"bold", fontSize:50, color:"#ffd24d", marginBottom:30}}>CRYPTO APP</Text>
-                    <Text style={{fontWeight:"bold", fontSize:20, color:"#ffd24d", marginBottom:20}}>Register Page</Text>
+                <View style={{alignItems:'center', justifyContent:'center', marginTop:60}}>
+                    <Text style={{fontWeight:"bold", fontSize:50, color:"#ffd24d", marginBottom:50}}>CRYPTO APP</Text>
                     <TextInput     
                         style={{width:"90%", 
                         marginBottom:20, 
@@ -78,7 +77,7 @@ export default class Login extends Component {
                         color:"black",
                         backgroundColor:"white",   
                         fontSize:16,}} 
-                        placeholder="name..."
+                        placeholder="Adınız..."
                         placeholderTextColor="#003f5c"
                         onChangeText={name=>this.setState({name:name})}
                         value={this.state.name}
@@ -109,14 +108,12 @@ export default class Login extends Component {
                         color:"black",
                         backgroundColor:"white",   
                         fontSize:16,}} 
-                        placeholder="Password..."
+                        placeholder="Şifreniz..."
                         placeholderTextColor="#003f5c"
                         secureTextEntry
                         onChangeText={password=>this.setState({password:password})}
                         value={this.state.password}
-                    />
-
-                   
+                    />                  
 
                     <TouchableOpacity
                     style={{width: "60%",
@@ -133,12 +130,16 @@ export default class Login extends Component {
                         <Text
                          style={{color: "black",
                          fontSize: 16,
-                         fontWeight: "bold",}}>Kayıt ol</Text>
+                         fontWeight: "bold",}}>KAYIT OL</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
+                    style={{marginTop:20}}
                     onPress={() => this.props.navigation.navigate("Login")}>
-                        <Text style={{color:"white"}} >OTURUM AÇ</Text>
+                      <Text style={{color:"white"}}>
+                        Zaten üye misin ?{' '}
+                        <Text style={{fontWeight: '500', color: '#ffd24d'}} >Oturum aç</Text>
+                      </Text>
                     </TouchableOpacity>
 
                     </View>

@@ -14,6 +14,13 @@ import TabNavigator from "./TabNavigator";
 import { LoginStackNavigator } from "./StackNavigator";
 import firebase from 'firebase';
 import Exchange from '../pages/Exchange';
+import { createStackNavigator } from "@react-navigation/stack";
+import KriptoPage from "../pages/KriptoPage";
+import {  
+  createSwitchNavigator,  
+  createAppContainer,  
+} from 'react-navigation';  
+import Icon from 'react-native-vector-icons/Octicons';
 
 const SignOut = () => {
   Alert.alert(

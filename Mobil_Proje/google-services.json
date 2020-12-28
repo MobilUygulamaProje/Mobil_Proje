@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "588535226176",
-    "project_id": "reactdeneme-f9f53",
-    "storage_bucket": "reactdeneme-f9f53.appspot.com"
+    "project_number": "889480625907",
+    "firebase_url": "https://crypto-app-7491e.firebaseio.com",
+    "project_id": "crypto-app-7491e",
+    "storage_bucket": "crypto-app-7491e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:588535226176:android:73093ce87a96482bf7a4a5",
+        "mobilesdk_app_id": "1:889480625907:android:941658d02b2460a9cd8186",
         "android_client_info": {
-          "package_name": "com.example.reactnativedeneme"
+          "package_name": "com.fbtproje.kriptotakipvecevir"
         }
       },
       "oauth_client": [
         {
-          "client_id": "588535226176-lh27u1isj07dneddipfopf8e4v5md0oo.apps.googleusercontent.com",
+          "client_id": "889480625907-ms5gdto2p8pt7rvauqu53nj20lovc4io.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBbaqeY5MSJlZrnBzaqNbpDUEsdukl8Dpk"
+          "current_key": "AIzaSyBxCnA8-aMG5L5PInEu81ZF7Nujx-Rv7kg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "588535226176-lh27u1isj07dneddipfopf8e4v5md0oo.apps.googleusercontent.com",
+              "client_id": "889480625907-ms5gdto2p8pt7rvauqu53nj20lovc4io.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

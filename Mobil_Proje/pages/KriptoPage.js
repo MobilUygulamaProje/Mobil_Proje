@@ -11,9 +11,10 @@ import Kriptolar from '../src/components/Kriptolar'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 const Height = Dimensions.get("window").height;
 const Width = Dimensions.get("window").width;
-import Icon from 'react-native-vector-icons/Octicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import DrawerNavigator from "../navigation/DrawerNavigator";
 import Kripto from "../navigation/DrawerNavigator";
+
 
 export default class KriptoPage extends Component {
 
@@ -59,7 +60,16 @@ export default class KriptoPage extends Component {
         return (
             <>
                 <View>
+
                     <View style={{ backgroundColor: "#232632", flexDirection: "row", padding: Height / 40, paddingLeft: Height / 50, paddingRight: Height / 50, justifyContent: "space-between", alignItems: "center" }}>
+
+                        <Icon
+                            name="menu-sharp"
+                            size={30}
+                            color="white"
+                            onPress={() => this.props.navigation.openDrawer()}
+                        />
+
                         <Text style={{ fontWeight: "bold", fontSize: 30, color: "#fff" }}>
                             CRYPTO App
                     </Text>

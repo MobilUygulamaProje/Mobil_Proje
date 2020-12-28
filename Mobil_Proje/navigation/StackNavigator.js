@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Favori from '../pages/Favori';
+import Sozluk from '../pages/Sozluk';
 import Kripto from '../pages/KriptoPage';
 import Exchange from '../pages/Exchange';
 import Login from '../pages/Login';
@@ -18,10 +18,10 @@ const MainStackNavigator = () => {
   );
 }
 
-const FavoriStackNavigator = () => {
+const SozlukStackNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Favori" component={Favori} options={{headerShown: false}} />
+      <Stack.Screen name="Sozluk" component={Sozluk} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 }
@@ -35,4 +35,4 @@ const LoginStackNavigator = () => {
   );
 }
 
-export { MainStackNavigator, FavoriStackNavigator, LoginStackNavigator };
+export { MainStackNavigator, SozlukStackNavigator, LoginStackNavigator };

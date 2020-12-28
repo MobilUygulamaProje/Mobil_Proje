@@ -16,12 +16,14 @@ const Stack = createStackNavigator();
 export default function App(){
   
     var firebaseConfig = {
-      apiKey: "AIzaSyBwQQ_cpncn6-RqPWCXO1psJWKF-P220XA",
-      authDomain: "reactdeneme-f9f53.firebaseapp.com",
-      projectId: "reactdeneme-f9f53",
-      storageBucket: "reactdeneme-f9f53.appspot.com",
-      messagingSenderId: "588535226176",
-      appId: "1:588535226176:web:a9bd7189e736b246f7a4a5"
+      apiKey: "AIzaSyBxLr-A8qT3GY8nd1LjjxNLYKD18xAG52Q",
+      authDomain: "crypto-app-7491e.firebaseapp.com",
+      databaseURL: "https://crypto-app-7491e.firebaseio.com",
+      projectId: "crypto-app-7491e",
+      storageBucket: "crypto-app-7491e.appspot.com",
+      messagingSenderId: "889480625907",
+      appId: "1:889480625907:web:048ef2bd7158682acd8186",
+      measurementId: "G-VR3YW6T6C7"
     };
 
     // Initialize Firebase
