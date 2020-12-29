@@ -1,8 +1,10 @@
-import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
+import firebase from 'firebase'
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, Button, Platform } from 'react-native';
+import { Text, View, Button, Platform, TextInput } from 'react-native';
+
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -13,13 +15,14 @@ Notifications.setNotificationHandler({
 });
 
 export default function addPost() {
+
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
 
-  useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+  useEffect(()=>{
+    registerForPushNotifications();
 
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
@@ -33,7 +36,9 @@ export default function addPost() {
       Notifications.removeNotificationSubscription(notificationListener);
       Notifications.removeNotificationSubscription(responseListener);
     };
-  }, []);
+  },[])
+
+
 
   return (
     <View
@@ -42,60 +47,64 @@ export default function addPost() {
         alignItems: 'center',
         justifyContent: 'space-around',
       }}>
-      <Text>Expo push tokeniniz: {expoPushToken}</Text>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Başlık: {notification && notification.request.content.title} </Text>
-        <Text>Metin: {notification && notification.request.content.body}</Text>
-        <Text>Veri: {notification && JSON.stringify(notification.request.content.data)}</Text>
-      </View>
-      <Button
-        title="Bildirim Göndermek İçin Tıkla!"
-        onPress={async () => {
-          await schedulePushNotification();
-        }}
-      />
+      <TouchableHighlight onPress={()=>{sendNotificationToAllUsers()}}>
+        <Text>Bildirim Göndermek İçin Tıkla!</Text>
+      </TouchableHighlight>      
     </View>
   );
 }
 
-async function schedulePushNotification() {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: "Bildiriminiz Var! 📬",
-      body: 'Piyasa verilerini görmek için tıkla',
-      data: { data: 'goes here' },
-    },
-    trigger: { seconds: 2 },
+export const registerForPushNotifications = async() =>{
+  const status = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+  let Fstatus=status;
+  
+  if (status !== 'granted') {
+      const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS)
+      Fstatus=status;
+  }
+  if (Fstatus !== 'granted') {return;}
+  let tokenim=await Notifications.getExpoPushTokenAsync();
+  console.log(token.data)
+
+  let uid = firebase.auth().currentUser.uid;
+  firebase.database().ref("users").child(uid).update({
+    Tokenim: tokenim.data
   });
 }
 
-async function registerForPushNotificationsAsync() {
-  let token;
-  if (Constants.isDevice) {
-    const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    let finalStatus = existingStatus;
-    if (existingStatus !== 'granted') {
-      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      finalStatus = status;
-    }
-    if (finalStatus !== 'granted') {
-      alert('Token alırken hata oluştu!');
-      return;
-    }
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
-  } else {
-    alert('Bildirimler için fiziksel bir cihaz kullanılmalı');
-  }
 
-  if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
-      name: 'default',
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C',
+async function sendPushNotification(Tokenim) {
+  const message = {
+      to: Tokenim,
+      sound: 'default',
+      title: "Crpyto",
+      body: "Son Dakika Crpyto Paralarina Bak.",
+      data: { data: 'Bildirim' },
+  };
+  console.log(message)
+  console.log("---------------------")
+
+  await fetch('https://exp.host/--/api/v2/push/send', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Accept-encoding': 'gzip, deflate',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(message),
     });
-  }
+}
 
-  return token;
+export const sendNotificationToAllUsers = async () => {
+  const users = await firebase.database().ref('/users').orderByChild('token');
+  users.once("value").then(snapshot => {
+      let tkn;
+      snapshot.forEach((childSub) => {
+          let childData = childSub.toJSON();
+          tkn = childData.Tokenim;
+          console.log("---------------------")
+          console.log(tkn);
+          sendPushNotification(tkn);
+      });
+  })
 }
