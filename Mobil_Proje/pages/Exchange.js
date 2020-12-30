@@ -1,13 +1,12 @@
 import React from 'react'
 import { View, Text, ScrollView, Dimensions, TouchableWithoutFeedback, Linking } from 'react-native'
-import NaviBar from '../src/components/NaviBar'
 import ExchangeDetails from '../src/components/ExchangeDetails'
 const Height = Dimensions.get("window").height;
 const Width = Dimensions.get("window").width;
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Icon from 'react-native-vector-icons/Ionicons';
 
-function Exchange({navigation}) {
+function Exchange({ navigation }) {
     return (
         <>
             <View>

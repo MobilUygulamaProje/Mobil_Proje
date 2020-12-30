@@ -1,38 +1,15 @@
 import React, { Component } from 'react'
-import firebase from 'firebase';
 import {
     View, KeyboardAvoidingView, TextInput,
     StyleSheet, Text, TouchableOpacity,
     StatusBar, ScrollView, Alert,
     Dimensions, TouchableWithoutFeedback, Linking
 } from 'react-native';
-import NaviBar from '../src/components/NaviBar'
-import Kriptolar from '../src/components/Kriptolar'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 const Height = Dimensions.get("window").height;
 const Width = Dimensions.get("window").width;
 
 export default class Sozluk extends Component {
-
-    state = {
-        user: {},
-        loading: false,
-    }
-
-    componentDidMount = () => {
-
-        firebase.auth().onAuthStateChanged(auth => {
-            if (auth) {
-                firebase.database().ref('users').child(auth.uid).once('value', (snap) => {
-                    this.setState({ user: snap.val() })
-                })
-            }
-            else {
-                this.props.navigation.navigate('Login')
-            }
-        })
-
-    }
 
     render() {
         return (

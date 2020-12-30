@@ -6,15 +6,11 @@ import {
     StatusBar, ScrollView, Alert,
     Dimensions, TouchableWithoutFeedback, Linking
 } from 'react-native';
-import NaviBar from '../src/components/NaviBar'
 import Kriptolar from '../src/components/Kriptolar'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 const Height = Dimensions.get("window").height;
 const Width = Dimensions.get("window").width;
 import Icon from 'react-native-vector-icons/Ionicons';
-import DrawerNavigator from "../navigation/DrawerNavigator";
-import Kripto from "../navigation/DrawerNavigator";
-
 
 export default class KriptoPage extends Component {
 
@@ -79,11 +75,13 @@ export default class KriptoPage extends Component {
                     <Text style={{ fontWeight: "bold", fontSize: 20, color: "black", margin: 20, }}>
                         Merhaba, {this.state.user.name}
                     </Text>
+
                 </View>
 
                 <ScrollView persistentScrollbar={true}>
                     <Kriptolar />
                 </ScrollView>
+                
             </>
         );
     }

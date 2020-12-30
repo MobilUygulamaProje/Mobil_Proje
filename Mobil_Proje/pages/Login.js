@@ -6,7 +6,6 @@ import {
   StatusBar, ScrollView, Alert
 } from 'react-native';
 import { StackActions } from '@react-navigation/native';
-import { withOrientation } from 'react-navigation';
 
 export default class Login extends Component {
 
@@ -20,6 +19,7 @@ export default class Login extends Component {
 
     firebase.auth().onAuthStateChanged(auth => {
       if (auth) {
+
         this.props.navigation.dispatch(
           StackActions.replace('Kripto')
         )
@@ -49,11 +49,17 @@ export default class Login extends Component {
 
   render() {
     return (
+      
       <ScrollView style={{ backgroundColor: "#2a2d3c" }}>
+        
         <StatusBar translucent={false} />
+        
         <KeyboardAvoidingView>
+          
           <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 80 }}>
+            
             <Text style={{ fontWeight: "bold", fontSize: 50, color: "#ffd24d", marginBottom: 50 }}>CRYPTO APP</Text>
+            
             <TextInput
               style={{
                 width: "90%",
@@ -112,16 +118,20 @@ export default class Login extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={{marginTop:30}}
+              style={{ marginTop: 30 }}
               onPress={() => this.props.navigation.navigate('Register')} >
-              <Text style={{color:"white"}}>
+              
+              <Text style={{ color: "white" }}>
                 Üye değil misin ?{' '}
                 <Text style={{ fontWeight: '500', color: '#ffd24d' }}>Kayıt ol</Text>
               </Text>
+            
             </TouchableOpacity>
 
           </View>
+          
         </KeyboardAvoidingView>
+
       </ScrollView>
     );
   }

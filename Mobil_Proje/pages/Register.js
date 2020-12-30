@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { StackActions } from '@react-navigation/native';
 
-export default class Login extends Component {
+export default class Register extends Component {
 
   state={
     name:'',
@@ -20,7 +20,8 @@ export default class Login extends Component {
 
     firebase.auth().onAuthStateChanged(auth =>{
         if(auth){
-          this.props.navigation.dispatch(
+          
+            this.props.navigation.dispatch(
             StackActions.replace('Kripto')
           )
         }
@@ -35,12 +36,16 @@ export default class Login extends Component {
     this.setState({loading:true})
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .then((auth) => {
+      
       let uid = auth.user.uid;
       this.createUser(uid);
+      
       this.props.navigation.dispatch(
         StackActions.replace('Kripto')
       )
+    
     }).catch((err)=>{
+      
       this.setState({loading:false});
       Alert.alert(
         'oops',
@@ -63,11 +68,17 @@ export default class Login extends Component {
 
   render() {
     return(
-      <ScrollView style={{backgroundColor:"#2a2d3c"}}>
+     
+     <ScrollView style={{backgroundColor:"#2a2d3c"}}>
+            
             <StatusBar translucent={false} />
+            
             <KeyboardAvoidingView>
-                <View style={{alignItems:'center', justifyContent:'center', marginTop:60}}>
+               
+               <View style={{alignItems:'center', justifyContent:'center', marginTop:60}}>
+                    
                     <Text style={{fontWeight:"bold", fontSize:50, color:"#ffd24d", marginBottom:50}}>CRYPTO APP</Text>
+                    
                     <TextInput     
                         style={{width:"90%", 
                         marginBottom:20, 
@@ -116,34 +127,40 @@ export default class Login extends Component {
                     />                  
 
                     <TouchableOpacity
-                    style={{width: "60%",
-                    backgroundColor: "#ffd24d",
-                    borderRadius: 25,
-                    height: 50,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginTop: 40,
-                    marginBottom: 20
-                    }}
-                    onPress={() => this.KayitOl()}
+                        style={{width: "60%",
+                        backgroundColor: "#ffd24d",
+                        borderRadius: 25,
+                        height: 50,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginTop: 40,
+                        marginBottom: 20
+                        }}
+                        onPress={() => this.KayitOl()}
                     >
                         <Text
                          style={{color: "black",
                          fontSize: 16,
                          fontWeight: "bold",}}>KAYIT OL</Text>
+                    
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                    style={{marginTop:20}}
-                    onPress={() => this.props.navigation.navigate("Login")}>
+                        style={{marginTop:20}}
+                        onPress={() => this.props.navigation.navigate("Login")}
+                    >
+                      
                       <Text style={{color:"white"}}>
                         Zaten üye misin ?{' '}
                         <Text style={{fontWeight: '500', color: '#ffd24d'}} >Oturum aç</Text>
                       </Text>
+                    
                     </TouchableOpacity>
 
                     </View>
+
             </KeyboardAvoidingView>
+            
         </ScrollView>
     );
   }
